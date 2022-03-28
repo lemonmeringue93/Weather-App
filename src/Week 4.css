@@ -1,0 +1,54 @@
+form {
+  display: block;
+  border-radius: 10px;
+  text-align: center;
+  font-size: larger;
+  position: relative;
+  top: 150px;
+  left: 30px;
+}
+
+body {
+  background-image: url("https://images2.alphacoders.com/899/thumb-1920-899809.png");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-color: transparent !important;
+  background-size: cover;
+}
+
+.card {
+  filter: alpha(opacity=50);
+  opacity: 0.5;
+}
+
+h1,
+h2,
+h3 {
+  display: block;
+  text-align: center;
+  position: relative;
+  top: 175px;
+  font-family: Arial, Helvetica, sans-serif;
+  color: white;
+}
+
+.temp {
+  color: white;
+  position: relative;
+  left: 80px;
+}
+.temp:hover {
+  cursor: pointer;
+}
+.row {
+  position: relative;
+  top: 250px;
+  left: 95px;
+}
+
+p {
+  position: relative;
+  bottom: 50px;
+  top: 130px;
+  left: 590px;
+}
