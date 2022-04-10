@@ -60,6 +60,9 @@ function geolocTemp(position) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(showGeotemp);
 }
+function getLocation(event) {
+  event.preventDefault();
+}
 navigator.geolocation.getCurrentPosition(geolocTemp);
 
 //change temp ONLY when geolocation emoji is clicked
@@ -67,6 +70,8 @@ function showGeotemp(response) {
   let geoTemp = Math.round(response.data.main.temp);
   let geoTempelement = document.querySelector("h3");
   geoTempelement.innerHTML = geoTemp;
+  let geoCity = documenmt.querySelector("h1");
+  geoCity.innerHTML = "${response.data.name}";
 }
 let geoEmoji = document.querySelector("#location");
-geoEmoji.addEventListener("click", geolocTemp);
+geoEmoji.addEventListener("click", getLocation);
