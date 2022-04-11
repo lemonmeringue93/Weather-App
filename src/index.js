@@ -27,8 +27,8 @@ if (minutes < 10) {
 //change h2 to present time
 let newDate = `${day} / ${hour}:${minutes}`;
 
-let h2 = document.querySelector("h2");
-h2.innerHTML = newDate;
+let date = document.querySelector("#date");
+date.innerHTML = newDate;
 console.log(new Date());
 
 let search = document.querySelector("#search");
@@ -48,7 +48,7 @@ function getTemp(event) {
 //change temp
 function showTemperature(response) {
   let temperature = Math.round(response.data.main.temp);
-  let temperatureElement = document.querySelector("h3");
+  let temperatureElement = document.querySelector("#newTemp");
   temperatureElement.innerHTML = temperature;
 }
 
@@ -68,7 +68,7 @@ navigator.geolocation.getCurrentPosition(geolocTemp);
 //change temp ONLY when geolocation emoji is clicked
 function showGeotemp(response) {
   let geoTemp = Math.round(response.data.main.temp);
-  let geoTempelement = document.querySelector("h3");
+  let geoTempelement = document.querySelector("#newTemp");
   geoTempelement.innerHTML = geoTemp;
   let geoCity = documenmt.querySelector("h1");
   geoCity.innerHTML = "${response.data.name}";

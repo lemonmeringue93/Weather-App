@@ -1,11 +1,12 @@
-form {
-  display: block;
+.form {
   border-radius: 10px;
   text-align: center;
   font-size: larger;
   position: relative;
   top: 150px;
   left: 30px;
+  font-size: 24px;
+  font-weight: 100;
 }
 
 body {
@@ -16,55 +17,52 @@ body {
   background-size: cover;
 }
 
-.card {
-  filter: alpha(opacity=50);
-  opacity: 0.5;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5 {
-  display: block;
-  text-align: center;
-  position: relative;
-  top: 175px;
-  font-family: Arial, Helvetica, sans-serif;
+h1 {
   color: white;
-  font-size: normal;
+  font-size: 24px;
+  font-weight: 100;
+  line-height: 28px;
+  margin-bottom: 0;
 }
 
-.convert {
-  display: block;
-  text-align: center;
-  position: relative;
-  top: 135px;
-  left: 30px;
-  font-family: Arial, Helvetica, sans-serif;
-  color: black;
+ul {
+  margin: 0;
+  padding: 0;
+}
+li {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  color: rgb(135, 135, 135);
+  font-size: 16px;
+  font-weight: 100;
+  line-height: 19px;
 }
 
-h7 {
-  display: block;
-  text-align: left;
-  position: relative;
-  bottom: -240px;
-  left: 90px;
-  font-family: Arial, Helvetica, sans-serif;
-  color: black;
-  font-size: 15px;
+.weather-app {
+  max-width: 600px;
+  margin: 30px auto;
+  margin-bottom: 0;
 }
-.temp {
-  color: white;
-  position: relative;
-  left: 80px;
+.weather-temperature {
+  margin-right: 10px;
+  font-size: 64px;
+  float: left;
 }
-.temp:hover {
-  cursor: pointer;
+
+.weather-temperature strong {
+  color: rgb(33, 33, 33);
+  font-size: 64px;
+  line-height: 1;
+  font-weight: 400;
 }
-.row {
+
+.float-left {
+  float: left;
+}
+
+.weather-temperature .units {
   position: relative;
-  top: 250px;
-  left: 95px;
+  font-size: 16px;
+  top: -1px;
 }

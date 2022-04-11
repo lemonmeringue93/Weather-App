@@ -15,78 +15,48 @@
     <link rel="stylesheet" href="src/index.css" />
   </head>
   <body>
+    <div class="container">
+      <div class="weather-app-wrapper">
+        <div class="weather-app">
+          <h1>Leeds <a href id="location">📍</a></h1>
+          <ul>
+          <li id="date"> Day / Time</li>
+          <li>Cloudy</li>
+          </ul>
 
-      <form  id="search-form">
-      <input type="Text" placeholder="City" id="city" />
-      <input type="Submit" value="Search" id="search" />
-    </form>
-    
+          <div class="row">
 
-      <h1>Leeds <a href id="location">📍</a></h1>
-      <h2>Day / Time</h2>
-      <h3 id="newTemp" type="number">19</h3>
-      <h4><a href id="celsius">C</a>/<a href id="fahrenheit">F</a></h4>
-      <h5>☁️</h5>
+            <div class="col-6">
+              <div class="clearfix weather-temperature">☁️</div>
+              <div class="float-left" id="newTemp" type="number">
+                <strong>19</strong>
+              </div>
+              <span class="units"> °C | °F</span>
+          </div>
 
-      <div class="row">
-  <div class="col-sm-2">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title" id="secondDay">Tuesday</h5>
-        <h5 clas="emoji">☁️</h5>
-        <a href="#" class="btn btn-primary">Temperature</a><a href="#" class="btn btn-primary">Humidity</a>
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-2">
-    <div class="card">
-      <div class="card-ody">
-        <h5 class="card-title" id="thirdDay">Wednesday</h5>
-        <p class="card-text">Emoji</p>
-        <a href="#" class="btn btn-primary">Temperature</a><a href="#" class="btn btn-primary">Humidity</a>
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-2">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title" id="fourthDay">Thursday</h5>
-        <p class="card-text">Emoji</p>
-        <a href="#" class="btn btn-primary">Temperature</a><a href="#" class="btn btn-primary">Humidity</a>
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-2">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title" id="fifthDay">Friday</h5>
-        <p class="card-text">Emoji</p>
-        <a href="#" class="btn btn-primary">Temperature</a><a href="#" class="btn btn-primary">Humidity</a>
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-2">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title" id="sixthDay">Saturday</h5>
-        <p class="card-text">Emoji</p>
-        <a href="#" class="btn btn-primary">Temperature</a><a href="#" class="btn btn-primary">Humidity</a>
-      </div>
-    </div>
-  </div>
-  <div class="col-sm-2">
-    <div class="card">
-      <div class="card-body">
-        <h5 class="card-title" id="seventhDay">Sunday</h5>
-        <p class="card-text">Emoji</p>
-        <a href="#" class="btn btn-primary">Temperature</a><a href="#" class="btn btn-primary">Humidity</a>
-      </div>
-    </div>
-  </div>
+        <div class="col-6">
+            <ul>
+              <li>Precipitation: 0%</li>
+              <li>Humidity: 75%</li>
+              <li>Wind: 2 km/h</li>
+            </ul>
+          </div>
+
 </div>
+       
+        <form id="search-form">
+          <input type="Text" placeholder="City" id="city" />
+          <input type="Submit" value="Search" id="search" />
+        </form>
       
+
+      <small
+        ><a href="https://github.com/lemonmeringue93/Weather-App"
+          >Open Source Code</a
+        >
+        by Belle Zamora.</small
+      >
     </div>
-    <h7><a href="https://github.com/lemonmeringue93/Weather-App">Open Source Code</a> by Belle Zamora.</a></=h7>
   </body>
   <script src="src/index.js"></script>
 </html>
