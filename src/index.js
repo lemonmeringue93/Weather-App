@@ -35,21 +35,26 @@ let search = document.querySelector("#search");
 let apiKey = "798023fb3d35165272c1fae40ceef0ea";
 search.addEventListener("click", getTemp);
 
-//get temp of city from openweather
+//get temp  of city from openweather
 function getTemp(event) {
   event.preventDefault();
   let cityInput = document.querySelector("#city");
-  let h1 = document.querySelector("h1");
+  let h1 = document.querySelector("#cityhead");
   h1.innerHTML = cityInput.value;
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityInput.value}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(showTemperature);
 }
 
-//change temp
+//change temp and humidity
 function showTemperature(response) {
   let temperature = Math.round(response.data.main.temp);
+  let humidity = Math.round(response.data.main.humidity);
+  console.log(response.data.main.temp);
+  console.log(response.data.main.humidity);
   let temperatureElement = document.querySelector("#newTemp");
   temperatureElement.innerHTML = temperature;
+  let humidityElement = document.querySelector("#humid");
+  humidityElement.innerHTML = humidity;
 }
 
 //get temp of city from geolocation
@@ -70,7 +75,7 @@ function showGeotemp(response) {
   let geoTemp = Math.round(response.data.main.temp);
   let geoTempelement = document.querySelector("#newTemp");
   geoTempelement.innerHTML = geoTemp;
-  let geoCity = documenmt.querySelector("h1");
+  let geoCity = documenmt.querySelector("#cityhead");
   geoCity.innerHTML = "${response.data.name}";
 }
 let geoEmoji = document.querySelector("#location");
