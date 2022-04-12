@@ -49,12 +49,16 @@ function getTemp(event) {
 function showTemperature(response) {
   let temperature = Math.round(response.data.main.temp);
   let humidity = Math.round(response.data.main.humidity);
-  console.log(response.data.main.temp);
-  console.log(response.data.main.humidity);
+  let wind = Math.round(response.data.wind.speed);
+  let description = response.data.weather[0].main;
   let temperatureElement = document.querySelector("#newTemp");
   temperatureElement.innerHTML = temperature;
   let humidityElement = document.querySelector("#humid");
   humidityElement.innerHTML = humidity;
+  let windElement = document.querySelector("#wind");
+  windElement.innerHTML = wind;
+  let descriptionElement = document.querySelector("#description");
+  descriptionElement.innerHTML = description;
 }
 
 //get temp of city from geolocation
@@ -65,10 +69,11 @@ function geolocTemp(position) {
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(showGeotemp);
 }
+
 function getLocation(event) {
   event.preventDefault();
+  navigator.geolocation.getCurrentPosition(geolocTemp);
 }
-navigator.geolocation.getCurrentPosition(geolocTemp);
 
 //change temp ONLY when geolocation emoji is clicked
 function showGeotemp(response) {
