@@ -18,25 +18,34 @@
     <div class="container">
       <div class="weather-app-wrapper">
         <div class="weather-app">
+          <div class="overview">
           <h1 id="cityhead">Leeds </h1><a href id="location">📍</a>
           <ul>
           <li id="date"> Day / Time</li>
           <li id="description">Cloudy</li>
           </ul>
+          </div>
 
           <div class="row">
 
             <div class="col-6">
-              <div class="clearfix weather-temperature">☁️</div>
-              <div class="float-left" id="newTemp" type="number">
-                <strong>19</strong>
-              </div>
+              <div class="clearfix weather-temperature">
+                <img
+                 src="https://tse4.mm.bing.net/th?id=OIP.51mwRT4mV6gbTCUBXuGKwwHaEh&pid=Api&P=0&w=298&h=182"
+                 alt="clear"
+                 id="icon"
+                 class="float-left"
+                 />
+              <div class="float-left"><strong id="newTemp" type="number">
+                19</strong>
               <span class="units"> °C |<a href id="fahrenheit">°F</a></span>
           </div>
+          </div>
+          </div>
+
 
         <div class="col-6">
             <ul>
-              <li>Precipitation: 0%</li>
               <li>Humidity: <span id="humid">75</span>%</li>
               <li>Wind: <span id="wind">2</span>m/s</li>
             </ul>

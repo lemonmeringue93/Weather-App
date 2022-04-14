@@ -50,7 +50,8 @@ function showTemperature(response) {
   let temperature = Math.round(response.data.main.temp);
   let humidity = Math.round(response.data.main.humidity);
   let wind = Math.round(response.data.wind.speed);
-  let description = response.data.weather[0].main;
+  let description = response.data.weather[0].description;
+  console.log(response.data);
   let temperatureElement = document.querySelector("#newTemp");
   temperatureElement.innerHTML = temperature;
   let humidityElement = document.querySelector("#humid");
@@ -59,6 +60,11 @@ function showTemperature(response) {
   windElement.innerHTML = wind;
   let descriptionElement = document.querySelector("#description");
   descriptionElement.innerHTML = description;
+  let iconElement = document.querySelector("#icon");
+  iconElement.setAttribute(
+    "src",
+    `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
 }
 
 //get temp of city from geolocation
@@ -80,8 +86,20 @@ function showGeotemp(response) {
   let geoTemp = Math.round(response.data.main.temp);
   let geoTempelement = document.querySelector("#newTemp");
   geoTempelement.innerHTML = geoTemp;
-  let geoCity = documenmt.querySelector("#cityhead");
-  geoCity.innerHTML = "${response.data.name}";
+  let geoCity = document.querySelector("#cityhead");
+  geoCity.innerHTML = `${response.data.name}`;
 }
 let geoEmoji = document.querySelector("#location");
 geoEmoji.addEventListener("click", getLocation);
+
+//convert Fahrenheit
+function displayFahrenheit(event) {
+  event.preventDefault;
+  let fahrenheitTemperature = (14 * 9) / 5 + 32;
+  let temperatureElement = document.querySelector("#newTemp");
+  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
+}
+
+//change temperature
+let fahrenheitLink = document.querySelector("#fahrenheit");
+fahrenheitLink.addEventListener("click", displayFahrenheit);

@@ -38,6 +38,9 @@ li {
   font-weight: 100;
   line-height: 19px;
 }
+.overview {
+  margin-bottom: 15px;
+}
 
 .weather-app {
   max-width: 600px;
@@ -55,6 +58,11 @@ li {
   font-size: 64px;
   line-height: 1;
   font-weight: 400;
+}
+
+.weather-temperature img {
+  height: 64px;
+  width: 64px;
 }
 
 .float-left {
