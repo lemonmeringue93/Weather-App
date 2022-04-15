@@ -61,7 +61,7 @@ li {
 }
 
 .weather-temperature img {
-  height: 64px;
+  height: 75px;
   width: 64px;
 }
 
@@ -104,4 +104,9 @@ li {
 }
 .link {
   color: gray;
+}
+
+.forecastemoji {
+  height: 40px;
+  width: 40px;
 }

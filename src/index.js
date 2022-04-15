@@ -65,6 +65,7 @@ function displayForecast(response) {
                 }@2x.png"
                 alt=""
                 width="36"
+                class="forecastemoji"
                 />
               <div class="weather-forecast-temperature">
                 <span class="weather-forecast-temperature-max">${Math.round(
