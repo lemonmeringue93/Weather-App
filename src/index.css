@@ -87,6 +87,8 @@ li {
 
 .weather-forecast {
   margin-top: 10px;
+  text-align: center;
+  color: white;
 }
 .weather-forecast-temperature-max {
   font-size: 16px;

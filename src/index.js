@@ -24,6 +24,8 @@ if (minutes < 10) {
   minutes = "0" + minutes;
 }
 
+//get everythihng on opening page
+navigator.geolocation.getCurrentPosition(geolocTemp);
 //change h2 to present time
 let newDate = `${day} / ${hour}:${minutes}`;
 
@@ -35,6 +37,37 @@ let search = document.querySelector("#search");
 let apiKey = "798023fb3d35165272c1fae40ceef0ea";
 search.addEventListener("click", getTemp);
 
+//display forecast
+function displayForecast(response) {
+  let forecast = response.data.daily;
+  console.log(response.data.daily);
+  let forecastElement = document.querySelector("#forecast");
+  let forecastHTML = `<div class="row">`;
+
+  forecast.forEach(function (forecastDay) {
+    forecastHTML =
+      forecastHTML +
+      `
+            <div class="col-2">
+              <div class="date">
+                ${forecastDay.dt}
+                </div>
+                <img 
+                src="http://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png"
+                alt=""
+                width="36"
+                />
+              <div class="weather-forecast-temperature">
+                <span class="weather-forecast-temperature-max">${forecastDay.temp.max}</span>°<span class="weather-forecast-temperature-min">${forecastDay.temp.min}</span>°
+              </div>
+            </div>
+        `;
+  });
+  forecastHTML = forecastHTML + `</div>`;
+  forecastElement.innerHTML = forecastHTML;
+  console.log(forecastHTML);
+}
+
 //get temp  of city from openweather
 function getTemp(event) {
   event.preventDefault();
@@ -45,28 +78,40 @@ function getTemp(event) {
   axios.get(apiUrl).then(showTemperature);
 }
 
+function getForecast(coordinates) {
+  console.log(coordinates);
+  let apiKey = "798023fb3d35165272c1fae40ceef0ea";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayForecast);
+  console.log(apiUrl);
+}
+
 //change temp and humidity
 function showTemperature(response) {
-  let temperature = Math.round(response.data.main.temp);
+  let celsiusTemperature = Math.round(response.data.main.temp);
   let humidity = Math.round(response.data.main.humidity);
   let wind = Math.round(response.data.wind.speed);
   let description = response.data.weather[0].description;
   console.log(response.data);
   let temperatureElement = document.querySelector("#newTemp");
-  temperatureElement.innerHTML = temperature;
+  temperatureElement.innerHTML = celsiusTemperature;
   let humidityElement = document.querySelector("#humid");
   humidityElement.innerHTML = humidity;
   let windElement = document.querySelector("#wind");
   windElement.innerHTML = wind;
   let descriptionElement = document.querySelector("#description");
   descriptionElement.innerHTML = description;
+  let geoCity = document.querySelector("#cityhead");
+  geoCity.innerHTML = `${response.data.name}`;
   let iconElement = document.querySelector("#icon");
   iconElement.setAttribute(
     "src",
     `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
 
-  celsiusTemperature = response.data.main.temp;
+  console.log(response.data);
+
+  getForecast(response.data.coord);
 }
 
 //get temp of city from geolocation
@@ -75,35 +120,12 @@ function geolocTemp(position) {
   var lat = position.coords.latitude;
   let apiKey = "798023fb3d35165272c1fae40ceef0ea";
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
-  axios.get(apiUrl).then(showGeotemp);
+  axios.get(apiUrl).then(showTemperature);
 }
 
 function getLocation(event) {
   event.preventDefault();
   navigator.geolocation.getCurrentPosition(geolocTemp);
-}
-
-//change temp ONLY when geolocation emoji is clicked
-function showGeotemp(response) {
-  let geoTemp = Math.round(response.data.main.temp);
-  let geoTempelement = document.querySelector("#newTemp");
-  geoTempelement.innerHTML = geoTemp;
-  let geoCity = document.querySelector("#cityhead");
-  geoCity.innerHTML = `${response.data.name}`;
-  let humidity = Math.round(response.data.main.humidity);
-  let wind = Math.round(response.data.wind.speed);
-  let description = response.data.weather[0].description;
-  let humidityElement = document.querySelector("#humid");
-  humidityElement.innerHTML = humidity;
-  let windElement = document.querySelector("#wind");
-  windElement.innerHTML = wind;
-  let descriptionElement = document.querySelector("#description");
-  descriptionElement.innerHTML = description;
-  let iconElement = document.querySelector("#icon");
-  iconElement.setAttribute(
-    "src",
-    `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
-  );
 }
 
 let geoEmoji = document.querySelector("#location");
