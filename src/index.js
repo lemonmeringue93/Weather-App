@@ -90,20 +90,50 @@ function showGeotemp(response) {
   geoTempelement.innerHTML = geoTemp;
   let geoCity = document.querySelector("#cityhead");
   geoCity.innerHTML = `${response.data.name}`;
+  let humidity = Math.round(response.data.main.humidity);
+  let wind = Math.round(response.data.wind.speed);
+  let description = response.data.weather[0].description;
+  let humidityElement = document.querySelector("#humid");
+  humidityElement.innerHTML = humidity;
+  let windElement = document.querySelector("#wind");
+  windElement.innerHTML = wind;
+  let descriptionElement = document.querySelector("#description");
+  descriptionElement.innerHTML = description;
+  let iconElement = document.querySelector("#icon");
+  iconElement.setAttribute(
+    "src",
+    `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
 }
+
 let geoEmoji = document.querySelector("#location");
 geoEmoji.addEventListener("click", getLocation);
 
-//convert Fahrenheit
+//convert to Fahrenheit
 function displayFahrenheit(event) {
   event.preventDefault();
   let temperatureElement = document.querySelector("#newTemp");
+  //remove active class from celsius link
+  celsius.classList.remove("active");
+  fahrenheit.classList.add("active");
   let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
   temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
 }
 
 let celsiusTemperature = null;
 
+//convert to celsius
+function displayCelsius(event) {
+  event.preventDefault();
+  celsius.classList.add("active");
+  fahrenheit.classList.remove("active");
+  let temperatureElement = document.querySelector("#newTemp");
+  temperatureElement.innerHTML = Math.round(celsiusTemperature);
+}
+
 //change temperature
-let fahrenheitLink = document.querySelector("#fahrenheit");
-fahrenheitLink.addEventListener("click", displayFahrenheit);
+let fahrenheit = document.querySelector("#fahrenheit");
+fahrenheit.addEventListener("click", displayFahrenheit);
+
+let celsius = document.querySelector("#celsius");
+celsius.addEventListener("click", displayCelsius);
