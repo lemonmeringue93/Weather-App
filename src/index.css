@@ -84,3 +84,19 @@ li {
 .weather-temperature .active:hover {
   text-decoration: none;
 }
+
+.weather-forecast {
+  margin-top: 10px;
+}
+.weather-forecast-temperature-max {
+  font-size: 16px;
+  opacity: 0.8;
+}
+
+.weather-forecast-temperature-min {
+  opacity: 0.5;
+  font-size: 16px;
+}
+.weather-forecast-temperature {
+  font-size: 13px;
+}
