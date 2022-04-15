@@ -65,6 +65,8 @@ function showTemperature(response) {
     "src",
     `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
+
+  celsiusTemperature = response.data.main.temp;
 }
 
 //get temp of city from geolocation
@@ -94,11 +96,13 @@ geoEmoji.addEventListener("click", getLocation);
 
 //convert Fahrenheit
 function displayFahrenheit(event) {
-  event.preventDefault;
-  let fahrenheitTemperature = (14 * 9) / 5 + 32;
+  event.preventDefault();
   let temperatureElement = document.querySelector("#newTemp");
+  let fahrenheitTemperature = (celsiusTemperature * 9) / 5 + 32;
   temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
 }
+
+let celsiusTemperature = null;
 
 //change temperature
 let fahrenheitLink = document.querySelector("#fahrenheit");
