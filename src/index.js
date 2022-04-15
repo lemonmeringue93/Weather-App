@@ -65,7 +65,6 @@ function displayForecast(response) {
                 }@2x.png"
                 alt=""
                 width="36"
-                class="forecastemoji"
                 />
               <div class="weather-forecast-temperature">
                 <span class="weather-forecast-temperature-max">${Math.round(
@@ -91,6 +90,7 @@ function getTemp(event) {
   h1.innerHTML = cityInput.value;
   let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${cityInput.value}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(showTemperature);
+  celsius.classList.add("active");
 }
 
 function getForecast(coordinates) {
@@ -103,13 +103,13 @@ function getForecast(coordinates) {
 
 //change temp and humidity
 function showTemperature(response) {
-  let celsiusTemperature = Math.round(response.data.main.temp);
+  let temperature = Math.round(response.data.main.temp);
   let humidity = Math.round(response.data.main.humidity);
   let wind = Math.round(response.data.wind.speed);
   let description = response.data.weather[0].description;
   console.log(response.data);
   let temperatureElement = document.querySelector("#newTemp");
-  temperatureElement.innerHTML = celsiusTemperature;
+  temperatureElement.innerHTML = temperature;
   let humidityElement = document.querySelector("#humid");
   humidityElement.innerHTML = humidity;
   let windElement = document.querySelector("#wind");
@@ -124,6 +124,7 @@ function showTemperature(response) {
     `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
 
+  celsiusTemperature = response.data.main.temp;
   console.log(response.data);
 
   getForecast(response.data.coord);
