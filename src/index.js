@@ -93,12 +93,38 @@ function getTemp(event) {
   celsius.classList.add("active");
 }
 
+//calL API forecast
 function getForecast(coordinates) {
   console.log(coordinates);
   let apiKey = "798023fb3d35165272c1fae40ceef0ea";
   let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayForecast);
   console.log(apiUrl);
+}
+//call API AQI
+function getAQI(coordinates) {
+  console.log(coordinates);
+  let apiKey = "798023fb3d35165272c1fae40ceef0ea";
+  let apiUrl = `http://api.openweathermap.org/data/2.5/air_pollution?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  axios.get(apiUrl).then(displayAQI);
+  console.log(apiUrl);
+}
+//displau AQI
+function displayAQI(response) {
+  console.log(response.data);
+  let aqi = response.data.list[0].main.aqi;
+  let aqiElement = document.querySelector("#aqi");
+  if (aqi == 1) {
+    aqiElement.innerHTML = aqi + " (Good)";
+  } else if (aqi == 2) {
+    aqiElement.innerHTML = aqi + " (Fair)";
+  } else if (aqi == 3) {
+    aqiElement.innerHTML = aqi + " (Moderate)";
+  } else if (aqi == 4) {
+    aqiElement.innerHTML = aqi + " (Poor)";
+  } else if (aqi == 5) {
+    aqiElement.innerHTML = aqi + " (Very Poor)";
+  }
 }
 
 //change temp and humidity
@@ -128,6 +154,8 @@ function showTemperature(response) {
   console.log(response.data);
 
   getForecast(response.data.coord);
+
+  getAQI(response.data.coord);
 }
 
 //get temp of city from geolocation
