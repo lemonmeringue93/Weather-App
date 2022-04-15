@@ -37,6 +37,12 @@ let search = document.querySelector("#search");
 let apiKey = "798023fb3d35165272c1fae40ceef0ea";
 search.addEventListener("click", getTemp);
 
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"];
+  return days[day];
+}
 //display forecast
 function displayForecast(response) {
   let forecast = response.data.daily;
@@ -44,13 +50,14 @@ function displayForecast(response) {
   let forecastElement = document.querySelector("#forecast");
   let forecastHTML = `<div class="row">`;
 
-  forecast.forEach(function (forecastDay) {
-    forecastHTML =
-      forecastHTML +
-      `
+  forecast.forEach(function (forecastDay, index) {
+    if (index < 6) {
+      forecastHTML =
+        forecastHTML +
+        `
             <div class="col-2">
               <div class="date">
-                ${forecastDay.dt}
+                ${formatDay(forecastDay.dt)}
                 </div>
                 <img 
                 src="http://openweathermap.org/img/wn/${
@@ -63,11 +70,12 @@ function displayForecast(response) {
                 <span class="weather-forecast-temperature-max">${Math.round(
                   forecastDay.temp.max
                 )}</span>°   <span class="weather-forecast-temperature-min">${Math.round(
-        forecastDay.temp.min
-      )}</span>°
+          forecastDay.temp.min
+        )}</span>°
               </div>
             </div>
         `;
+    }
   });
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;

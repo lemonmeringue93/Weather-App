@@ -102,3 +102,6 @@ li {
 .weather-forecast-temperature {
   font-size: 13px;
 }
+.link {
+  color: gray;
+}
