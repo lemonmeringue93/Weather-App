@@ -60,7 +60,7 @@ function displayForecast(response) {
                 ${formatDay(forecastDay.dt)}
                 </div>
                 <img 
-                src="http://openweathermap.org/img/wn/${
+                src="https://openweathermap.org/img/wn/${
                   forecastDay.weather[0].icon
                 }@2x.png"
                 alt=""
@@ -105,7 +105,7 @@ function getForecast(coordinates) {
 function getAQI(coordinates) {
   console.log(coordinates);
   let apiKey = "798023fb3d35165272c1fae40ceef0ea";
-  let apiUrl = `http://api.openweathermap.org/data/2.5/air_pollution?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/air_pollution?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apiKey}&units=metric`;
   axios.get(apiUrl).then(displayAQI);
   console.log(apiUrl);
 }
