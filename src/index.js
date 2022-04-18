@@ -133,6 +133,12 @@ function showTemperature(response) {
   let humidity = Math.round(response.data.main.humidity);
   let wind = Math.round(response.data.wind.speed);
   let description = response.data.weather[0].description;
+  let tempmax = Math.round(response.data.main.temp_max);
+  let tempmin = Math.round(response.data.main.temp_min);
+  let highElement = document.querySelector("#high");
+  highElement.innerHTML = tempmax;
+  let lowElement = document.querySelector("#low");
+  lowElement.innerHTML = tempmin;
   console.log(response.data);
   let temperatureElement = document.querySelector("#newTemp");
   temperatureElement.innerHTML = temperature;

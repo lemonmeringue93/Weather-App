@@ -68,6 +68,12 @@ li {
 .float-left {
   float: left;
 }
+.highlow {
+  position: relative;
+  font-size: 16px;
+  left: 85px;
+  top: -30px;
+}
 
 .weather-temperature .units {
   position: relative;
@@ -109,4 +115,10 @@ li {
 .forecastemoji {
   height: 40px;
   width: 40px;
+}
+.highlow {
+  color: white;
+}
+.lowunit {
+  opacity: 0.5;
 }
