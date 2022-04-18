@@ -144,6 +144,8 @@ function showTemperature(response) {
   descriptionElement.innerHTML = description;
   let geoCity = document.querySelector("#cityhead");
   geoCity.innerHTML = `${response.data.name}`;
+  celsius.classList.add("active");
+  fahrenheit.classList.remove("active");
   let iconElement = document.querySelector("#icon");
   iconElement.setAttribute(
     "src",
